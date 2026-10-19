@@ -1,0 +1,398 @@
+body {
+    background-color: #121212;  /* цвет фона страницы */
+    color: #ffffff;             /* цвет текста по умолчанию */
+    font-family: "Segoe UI";    /* шрифт по умолчанию */
+    margin: 0;                  /* убираем отступы body по умолчанию */
+    min-height: 100vh;          /* растягиваем на всю высоту окна */
+    display: flex;              /* включаем flex-контейнер */
+    flex-direction: column;     /* элементы идут друг под другом */
+    align-items: center;        /* центрируем содержимое по горизонтали */
+    padding: 60px 20px;         /* внутренние отступы страницы */
+    box-sizing: border-box;     /* padding входит в ширину */
+}
+
+.catalog {
+    width: 100%;       /* контейнер на всю доступную ширину */
+    max-width: 720px;  /* ограничиваем ширину для читаемости */
+}
+
+.title {
+    color: #ffffff;      /* цвет заголовка */
+    margin: 0;           /* отступ до разделителя задает .divider */
+    font-size: 32px;     /* размер текста */
+    line-height: 1.2;    /* межстрочный интервал */
+    text-align: center;  /* центрирование текста */
+}
+
+/* ---------- карточка статьи ---------- */
+
+.card {
+    width: 100%;                         /* карточка на всю ширину контейнера */
+    max-width: 720px;                    /* ограничиваем ширину как у контейнера */
+    box-sizing: border-box;              /* padding входит в ширину */
+    background-color: #1e1e1e;           /* цвет фона карточки */
+    border: 2px solid transparent;       /* обводка карточки по умолчанию */
+    border-radius: 12px;                 /* скругленные углы */
+    padding: 24px 28px;                  /* внутренние отступы */
+    margin-bottom: 20px;                 /* отступ между карточками */
+    transition: border-color 0.3s ease,  /* поведение обводки при наведении */
+                box-shadow 0.3s ease,
+                transform 0.3s ease;
+}
+
+.card:hover {
+    border-color: #fa6b24;                          /* обводка при наведении */
+    box-shadow: 0 0 16px rgba(250, 107, 36, 0.35);  /* размытие для обводки */
+    transform: translateY(-2px);                    /* легкий подъем карточки */
+}
+
+.body {
+    width: 100%;
+}
+
+.card h2 {
+    margin: 0 0 8px 0;  /* отступ снизу */
+    font-size: 22px;    /* размер текста */
+    line-height: 1.2;   /* межстрочный интервал */
+}
+
+.card h2 a {
+    color: #ffffff;               /* цвет заголовка-ссылки */
+    text-decoration: none;        /* убираем подчеркивание */
+    transition: color 0.3s ease;  /* поведение цвета при наведении */
+}
+
+.card h2 a:hover {
+    color: #fa6b24;  /* цвет заголовка при наведении */
+}
+
+.card-meta {
+    color: #8f8f8f;      /* цвет даты */
+    font-size: 14px;     /* размер текста */
+    margin: 0 0 12px 0;  /* отступ снизу */
+}
+
+.card-description {
+    color: #c8c8c8;      /* цвет описания */
+    font-size: 16px;     /* размер текста */
+    line-height: 1.5;    /* межстрочный интервал */
+    margin: 0 0 20px 0;  /* отступ снизу до кнопки */
+}
+
+.card:first-of-type {
+    margin-top: 40px;  /* отступ от разделителя до первой карточки */
+}
+
+.card:last-of-type {
+    margin-bottom: 10px;  /* отступ снизу нижней в каталоге карточки */
+}
+
+/* ---------- кнопка "Читать" ---------- */
+
+.read {
+    display: block;                 /* блочная ссылка, чтобы margin работал */
+    width: 33.333%;                 /* ширина по содержимому */
+    margin-left: auto;              /* прижимаем вправо */
+    padding: 10px 24px;             /* внутренние отступы */
+    box-sizing: border-box;         /* padding входит в ширину */
+    background-color: transparent;  /* прозрачный фон */
+    color: #fa6b24;                 /* цвет текста */
+    border: 2px solid #fa6b24;      /* цвет обводки */
+    border-radius: 8px;             /* скругленные углы */
+    text-decoration: none;          /* убираем подчеркивание */
+    text-align: center;             /* центрируем текст внутри кнопки */
+    font-size: 15px;                /* размер текста */
+    transition: color 0.3s ease,    /* поведение при наведении указателя */
+                background-color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.read:hover {
+    color: #ffffff;                                /* цвет текста при наведении */
+    background-color: #fa6b24;                     /* заливка при наведении */
+    transform: translateY(-2px);                   /* легкий подъем кнопки */
+    box-shadow: 0 0 16px rgba(250, 107, 36, 0.5);  /* размытие для обводки */
+}
+
+/* ---------- навигация ---------- */
+
+.navigation {
+    width: 100%;             /* на всю ширину контейнера */
+    max-width: 720px;        /* ограничиваем ширину как у карточки */
+    box-sizing: border-box;  /* padding входит в ширину */
+    display: flex;           /* выстраиваем ссылки в ряд */
+    gap: 20px;               /* расстояние между ссылками */
+    flex-wrap: wrap;         /* переносим на новую строку при нехватке места */
+    font-size: 15px;         /* размер текста */
+}
+
+.navigation.bottom {
+    margin-top: 0;      /* отступ от карточек */
+    padding-top: 30px;  /* внутренний отступ сверху */
+}
+
+.navigation a {
+    color: #8f8f8f;               /* цвет ссылок навигации */
+    text-decoration: none;        /* убираем подчеркивание */
+    transition: color 0.3s ease;  /* поведение цвета при наведении */
+}
+
+.navigation a:hover {
+    color: #fa6b24;  /* цвет ссылок при наведении */
+}
+
+.divider {
+    width: 100%;                  /* на всю ширину родителя */
+    max-width: 720px;             /* но не шире колонки контента */
+    box-sizing: border-box;       /* padding входит в ширину */
+    border: none;                 /* убираем стандартную обводку */
+    height: 1px;                  /* высота линии */
+    margin: 40px auto 8px;        /* отступы сверху и снизу */
+    background: linear-gradient(  /* градиент от прозрачного к цвету и обратно */
+        to right,
+        transparent 0%,
+        #2a2a2a 20%,
+        #2a2a2a 80%,
+        transparent 100%
+    );
+}
+
+.divider-catalog {
+    margin: 30px auto 0;  /* переопределение отступов для каталога */
+}
+
+/* ---------- страница статьи ---------- */
+
+.post {
+    width: 100%;       /* контейнер на всю ширину */
+    max-width: 720px;  /* уже каталога для читаемости */
+}
+
+/* ---------- навигация в статье ---------- */
+
+.post-navigation {
+    display: flex;    /* выстраиваем ссылки в ряд */
+    flex-wrap: wrap;  /* переносим на новую строку при нехватке места */
+    font-size: 15px;  /* размер текста */
+}
+
+.post-navigation.bottom {
+    margin-top: 0;      /* отступ от текста статьи */
+    padding-top: 30px;  /* внутренний отступ сверху */
+}
+
+.post-navigation a {
+    color: #8f8f8f;               /* цвет ссылок навигации */
+    text-decoration: none;        /* убираем подчеркивание */
+    transition: color 0.3s ease;  /* поведение цвета при наведении */
+}
+
+.post-navigation a:hover {
+    color: #fa6b24;  /* цвет ссылок при наведении */
+}
+
+.post-navigation a:last-child {
+    margin-left: auto;  /* последняя ссылка уезжает вправо */
+}
+
+/* ---------- шапка статьи ---------- */
+
+.post-header h1 {
+    color: #ffffff;      /* цвет заголовка */
+    font-size: 34px;     /* размер текста */
+    line-height: 1.25;   /* межстрочный интервал */
+    margin: 0 0 12px 0;  /* отступ снизу */
+}
+
+.post-meta {
+    color: #8f8f8f;   /* цвет даты */
+    font-size: 14px;  /* размер текста */
+    margin: 0;        /* убираем отступы */
+}
+
+.post-author {
+    color: #c8c8c8;    /* цвет автора светлее даты */
+    margin-left: 4px;  /* отступ от даты */
+}
+
+.post-author::before {
+    content: "•";       /* разделитель-точка */
+    color: #8f8f8f;     /* цвет разделителя */
+    margin-right: 8px;  /* отступ до имени */
+}
+
+/* ---------- тело статьи ---------- */
+
+.post-content {
+    color: #d0d0d0;    /* цвет текста статьи */
+    font-size: 17px;   /* размер текста */
+    line-height: 1.7;  /* межстрочный интервал */
+}
+
+.post-content h2 {
+    color: #ffffff;         /* цвет заголовка раздела */
+    font-size: 26px;        /* размер текста */
+    margin: 48px 0 16px 0;  /* отступы сверху и снизу */
+    line-height: 1.2;       /* межстрочный интервал */
+}
+
+.post-content h2:first-child {
+    margin-top: 30px;  /* отступ от разделителя до первого заголовка */
+}
+
+.post-content h3 {
+    color: #ffffff;         /* цвет подзаголовка */
+    font-size: 20px;        /* размер текста */
+    margin: 36px 0 12px 0;  /* отступы сверху и снизу */
+    line-height: 1.2;       /* межстрочный интервал */
+}
+
+.post-content h4 {
+    color: #ffffff;         /* цвет заголовка */
+    font-size: 18px;        /* размер текста */
+    margin: 28px 0 10px 0;  /* отступы сверху и снизу */
+    line-height: 1.3;       /* межстрочный интервал */
+}
+
+.post-content h5 {
+    color: #ffffff;        /* цвет заголовка */
+    font-size: 17px;       /* размер текста */
+    margin: 24px 0 8px 0;  /* отступы сверху и снизу */
+    line-height: 1.3;      /* межстрочный интервал */
+}
+
+.post-content h6 {
+    color: #ffffff;         /* цвет заголовка — приглушённый */
+    font-size: 15px;        /* размер текста */
+    letter-spacing: 0.5px;  /* разрядка букв */
+    margin: 20px 0 8px 0;   /* отступы сверху и снизу */
+    line-height: 1.3;       /* межстрочный интервал */
+}
+
+.post-content p {
+    margin: 0 0 20px 0;  /* отступ между абзацами */
+}
+
+.post-content strong {
+    color: #ffffff;  /* цвет выделенного текста */
+}
+
+.post-content em {
+    color: #ffffff;  /* цвет курсива */
+}
+
+/* ---------- ссылки внутри текста ---------- */
+
+.post-content a {
+    color: #fa6b24;                        /* цвет ссылок в тексте */
+    text-decoration: none;                 /* убираем подчеркивание */
+    border-bottom: 1px solid transparent;  /* подчеркивание по умолчанию прозрачное */
+    transition: border-color 0.3s ease;    /* поведение подчеркивания при наведении */
+}
+
+.post-content a:hover {
+    border-bottom-color: #fa6b24;  /* подчеркивание при наведении */
+}
+
+/* ---------- аббревиатуры ---------- */
+
+.post-content abbr {
+    text-decoration: underline dotted #fa6b24;  /* пунктирное подчёркивание */
+    cursor: help;                               /* курсор-подсказка */
+}
+
+/* ---------- списки ---------- */
+
+.post-content ul {
+    margin: 0 0 20px 0;  /* отступ снизу от списка */
+    padding-left: 24px;  /* отступ слева для маркеров */
+}
+.post-content ol {
+    margin: 0 0 20px 0;  /* отступ снизу от списка */
+    padding-left: 24px;  /* отступ слева для маркеров */
+}
+
+.post-content li {
+    margin-bottom: 8px;  /* отступ между пунктами списка */
+}
+
+.post-content li::marker {
+    color: #fa6b24;  /* цвет маркеров списка */
+}
+
+/* ---------- разделитель между частями ---------- */
+
+.post-content hr {
+    border: none;                   /* убираем стандартную обводку */
+    border-top: 1px solid #2a2a2a;  /* тонкая линия */
+    margin: 40px 0;                 /* отступы сверху и снизу */
+}
+
+/* ---------- инлайн-код ---------- */
+
+.post-content code {
+    background-color: #1e1e1e;  /* цвет фона инлайн-кода */
+    color: #fa6b24;             /* цвет текста инлайн-кода */
+    font-family: "Consolas";    /* моноширинный шрифт */
+    font-size: 15px;            /* размер текста */
+    padding: 2px 6px;           /* внутренние отступы */
+    border-radius: 4px;         /* скругленные углы */
+}
+
+/* ---------- блок кода ---------- */
+
+.post-content pre {
+    background-color: #1e1e1e;  /* цвет фона блока кода */
+    border: 1px solid #2a2a2a;  /* обводка блока кода */
+    border-radius: 8px;         /* скругленные углы */
+    padding: 16px 20px;         /* внутренние отступы */
+    overflow-x: auto;           /* горизонтальная прокрутка при переполнении */
+    margin: 0 0 24px 0;         /* отступ снизу */
+    line-height: 1.5;           /* межстрочный интервал */
+}
+
+.post-content pre code {
+    background: none;  /* убираем фон у кода внутри pre */
+    color: #d0d0d0;    /* цвет текста блока кода */
+    padding: 0;        /* убираем внутренние отступы */
+    font-size: 14px;   /* размер текста */
+}
+
+/* ---------- цитата ---------- */
+
+.post-content blockquote {
+    border-left: 3px solid #fa6b24;  /* оранжевая полоса слева */
+    margin: 0 0 20px 0;              /* отступ снизу */
+    padding: 4px 0 4px 20px;         /* внутренние отступы */
+    color: #8f8f8f;                  /* цвет текста цитаты */
+    font-style: italic;              /* курсив */
+}
+
+/* ---------- картинки и подписи ---------- */
+
+.post-content img {
+    max-width: 100%;       /* картинка не выходит за пределы контейнера */
+    height: auto;          /* сохраняем пропорции */
+    border-radius: 8px;    /* скругленные углы */
+    margin: 8px 0 12px 0;  /* отступы сверху и снизу */
+}
+
+.post-content figure {
+    margin: 24px 0;  /* отступы вокруг фигуры */
+}
+
+.post-content figcaption {
+    color: #8f8f8f;      /* цвет подписи */
+    font-size: 14px;     /* размер текста */
+    text-align: center;  /* центрирование подписи */
+    line-height: 1.4;    /* межстрочный интервал */
+}
+
+/* ---------- адаптация под мобильные устройства ---------- */
+
+@media (max-width: 600px) {
+    .read {
+        width: fit-content;  /* ширина по содержимому */
+    }
+}
